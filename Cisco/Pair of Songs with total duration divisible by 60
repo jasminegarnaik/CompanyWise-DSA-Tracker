@@ -1,0 +1,25 @@
+## Approach
+Use a frequency array to count remainders mod 60.
+For each time[i]:
+- Find remainder = time[i] % 60
+- Count how many times (60 - remainder) % 60 appeared before
+- Update frequency of remainder
+
+## Leetcode Link-
+https://leetcode.com/problems/pairs-of-songs-with-total-durations-divisible-by-60/description/
+
+## JAVA Code
+class Solution {
+    public int numPairsDivisibleBy60(int[] time) {
+        int n=time.length;
+        int count=0;
+        int[] freq=new int[60];
+        for(int i=0;i<n;i++){
+            int rem=time[i]%60;
+            int complement=(60-rem)%60;
+            count+=freq[complement];
+            freq[rem]++;
+        }
+        return count;
+    }
+}
