@@ -1,0 +1,46 @@
+## Approach
+This is a variation of binary search used to search in a rotated sorted array.
+1. Find the mid-point of the current range.
+2. Determine whether the left half or right half is sorted.
+3. Decide where to continue the search based on where the target lies:
+   - If the left half is sorted:
+       - Check if the target lies in it.
+   - Otherwise, the right half must be sorted:
+       - Check if the target lies in it.
+4. Narrow the search space accordingly.
+5. Continue until the target is found or the range is invalid.
+
+## Leetcode Link
+https://leetcode.com/problems/search-in-rotated-sorted-array/
+
+## JAVA Code
+class Solution {
+    public int search(int[] nums, int target) {
+        int n=nums.length;
+       int low=0;
+       int high=n-1;
+       while(low<=high){
+        int mid=low+(high-low)/2;
+        if(target==nums[mid]) return mid;
+        //Search in left sorted array
+        if(nums[low]<=nums[mid]){
+        if(target>=nums[low] && target<=nums[mid]){
+            high=mid-1;
+        }
+        else{
+           low=mid+1; 
+        }
+        }
+        //Search in right sorted array
+        else{
+        if(target>=nums[mid] && target<=nums[high]){
+         low=mid+1;
+        }
+        else{
+       high=mid-1;
+        }
+        }
+       }
+       return -1;
+    }
+}
