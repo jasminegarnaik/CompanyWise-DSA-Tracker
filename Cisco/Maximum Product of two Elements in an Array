@@ -1,0 +1,66 @@
+## Approach
+## Brute force
+1.Initialize the answer ans = 0.
+2.Iterate i over the indices of nums:
+  ->Iterate j over the indices of nums, starting from i + 1:
+     *Calculate (nums[i] - 1) * (nums[j] - 1) and update ans if it is larger.
+3.Return ans.
+
+## JAVA Code
+class Solution {
+    public int maxProduct(int[] nums) {
+        int n=nums.length;
+        int ans=0;
+        for(int i=0;i<n;i++){
+            for(int j=i+1;j<n;j++){
+                ans=Math.max(ans,(nums[i]-1)*(nums[j]-1));
+            }
+        }
+        return ans;
+    }
+}
+
+## Better
+1.Sort nums in ascending order.
+2.Set x as the last element in nums and y as the second last element in nums.
+3.Return (x - 1) * (y - 1).
+## JAVA Code
+class Solution {
+    public int maxProduct(int[] nums) {
+        int n=nums.length;
+        Arrays.sort(nums);
+        int x=nums[n-1];
+        int y=nums[n-2];
+        return (x-1)*(y-1);
+    }
+}
+
+##Optimal
+1.Initialize biggest = 0 and secondBiggest = 0.
+2.Iterate over each num in nums:
+  ->If num > biggest:
+    *Update secondBiggest = biggest.
+    *Update biggest = num.
+  ->Else:
+    *Update secondBiggest with num if it is larger.
+3.Return (biggest - 1) * (secondBiggest - 1).
+
+## JAVA Code
+class Solution {
+    public int maxProduct(int[] nums) {
+        int n=nums.length;
+        int biggest=0;
+        int secondBiggest=0;
+        for(int num:nums){
+            if(num>biggest){
+                secondBiggest=biggest;
+                biggest=num;
+            }
+            else{
+                secondBiggest=Math.max(secondBiggest,num);
+            }
+        }
+        return (biggest-1)*(secondBiggest-1);
+        
+    }
+}
