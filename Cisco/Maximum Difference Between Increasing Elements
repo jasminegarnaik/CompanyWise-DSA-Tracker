@@ -1,0 +1,31 @@
+## Approach
+1.Initialize:
+    *minEle = nums[0] (smallest value seen so far)
+    *maxDiff = -1 (default return if no such pair exists)
+2.Loop through the array:
+    *If nums[i] > minEle, a valid pair exists:
+      ->Update maxDiff = max(maxDiff, nums[i] - minEle)
+    *Else, update minEle = nums[i] (new smaller element)
+3.Return maxDiff at the end.
+
+##Leetcode Link-
+https://leetcode.com/problems/maximum-difference-between-increasing-elements/
+
+##JAVA Code
+class Solution {
+    public int maximumDifference(int[] nums) {
+        int n=nums.length;
+        int minEle=nums[0];
+        int maxDiff=-1;
+        for(int i=0;i<n;i++){
+         if(nums[i]>minEle){
+         maxDiff=Math.max(maxDiff,nums[i]-minEle);
+         }
+         else{
+         minEle=nums[i];
+         }
+        }
+        return maxDiff;
+    }
+}
+
