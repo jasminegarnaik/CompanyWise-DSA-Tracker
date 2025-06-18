@@ -1,4 +1,4 @@
-## Approach
+/*Approach
 ->Sort the array
 ->Fix one number(nums[i]) in the array.For each fixed number,use two pointers(i+1 to n-1) to find the remaining two numbers that sum up to (-nums[i]) 
 ->Two-Pointer Search (in twoSum method):
@@ -20,9 +20,9 @@
 
 ##Leetcode link
 https://leetcode.com/problems/3sum/description/
+*/
 
-
-##JAVA Code
+//JAVA Code
 class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
         int n=nums.length;
