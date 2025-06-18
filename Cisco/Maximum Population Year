@@ -1,0 +1,31 @@
+## Approach
+1.Initialize a population change array for years 1950 to 2050 (size 2051).
+2.For each person in logs:
+   *Add +1 at their birth year.
+   *Subtract -1 at their death year.
+3.Compute prefix sum over the years to get actual population year by year.
+4.Track the maximum population and the earliest year it occurs.
+5.Return the year with maximum population.
+
+## Leetcode Link-
+https://leetcode.com/problems/maximum-population-year/description/
+
+## JAVA Code
+class Solution {
+    public int maximumPopulation(int[][] logs) {
+     int[] year=new int[2051];
+     for(int[] log:logs){
+        year[log[0]]+=1;
+        year[log[1]]-=1;
+     }
+     int maxYear=1950,maxNum=year[1950];
+     for(int i=1951;i<year.length;i++){
+        year[i]+=year[i-1];
+        if(year[i]>maxNum){
+            maxNum=year[i];
+            maxYear=i;
+        }
+     } 
+     return maxYear;       
+    }
+}
