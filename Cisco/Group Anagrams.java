@@ -1,4 +1,4 @@
-## Approach
+/* Approach
 We group words that are anagrams by using a HashMap.
 1. For each string in the input array:
    - Convert the string to a character array.
@@ -7,10 +7,10 @@ We group words that are anagrams by using a HashMap.
    - Add the original string to the list corresponding to that key.
 2. Finally, return all values (lists of grouped anagrams) from the HashMap.
 
-## Leetcode Link
+ Leetcode Link
 https://leetcode.com/problems/group-anagrams/description/
-
-## JAVA Code
+*/
+// JAVA Code
 class Solution {
     public List<List<String>> groupAnagrams(String[] strs) {
         Map<String,List<String>> map=new HashMap<>();
